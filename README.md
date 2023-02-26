@@ -1,6 +1,6 @@
 # Monk's Combat Marker
 Add-On Module for Foundry VTT
-It's just a bunch of little things to make the program run a little smoother and look a little better.  But a lot are based on personal preference.
+Display an animated disc behind the token to indicate when it's turn in combat
 
 ## Installation
 Simply use the install module screen within the FoundryVTT setup

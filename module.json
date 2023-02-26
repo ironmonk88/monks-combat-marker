@@ -51,9 +51,6 @@
     "monks-combat-marker.js",
     "settings.js"
   ],
-  "styles": [
-    "css/monks-combat-marker.css"
-  ],
   "url": "https://github.com/ironmonk88/monks-combat-marker",
   "download": "https://github.com/ironmonk88/monks-combat-marker/archive/10.1.zip",
   "manifest": "https://github.com/ironmonk88/monks-combat-marker/releases/latest/download/module.json",

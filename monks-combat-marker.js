@@ -1,5 +1,4 @@
 ﻿import { registerSettings } from "./settings.js";
-import { CombatMarker } from "./js/combat-marker.js";
 
 export let debugEnabled = 0;
 
@@ -45,9 +44,6 @@ export class MonksCombatMarker {
     static markerCache = {};
 
     static init() {
-        if (game.MonksCombatMarker == undefined)
-            game.MonksCombatMarker = MonksCombatMarker;
-
         /*
         Object.defineProperty(Scene.prototype, "thumbnail", {
             get: function () {
@@ -65,7 +61,7 @@ export class MonksCombatMarker {
         }*/
 
         registerSettings();
-        MonksCombatMarker.registerHotKeys();
+        //MonksCombatMarker.registerHotKeys();
 
         let tokenDragStart = function (wrapped, ...args) {
             wrapped.call(this, ...args);
@@ -103,6 +99,63 @@ export class MonksCombatMarker {
         MonksCombatMarker._setting["token-combat-animation"] = setting("token-combat-animation");
         MonksCombatMarker._setting["token-combat-animation-hostile"] = setting("token-combat-animation-hostile");
         MonksCombatMarker._setting["token-highlight-scale"] = setting("token-highlight-scale");
+
+        if (!setting("transfer-settings") && game.user.isGM) {
+            MonksCombatMarker.transferSettings();
+        }
+    }
+
+    static async transferSettings() {
+        let setSetting = async function (name) {
+            let oldChange = game.settings.settings.get(`monks-combat-marker.${name}`).onChange;
+            game.settings.settings.get(`monks-combat-marker.${name}`).onChange = null;
+            await game.settings.set("monks-combat-marker", name, game.settings.get("monks-little-details", name));
+            game.settings.settings.get(`monks-combat-marker.${name}`).onChange = oldChange;
+        }
+
+        await setSetting("token-highlight-remove");
+        await setSetting("token-highlight-animate");
+        await setSetting("token-highlight-picture");
+        await setSetting("token-highlight-picture-hostile");
+        await setSetting("token-highlight-scale");
+        await setSetting("token-combat-animation");
+        await setSetting("token-combat-animation-hostile");
+
+        for (let scene of game.scenes) {
+            for (let token of scene.tokens) {
+                if (getProperty(token, "flags.monks-little-details.token-highlight")) {
+                    await token.update({ "flags.monks-combat-marker.token-highlight": getProperty(token, "flags.monks-little-details.token-highlight") });
+                }
+                if (getProperty(token, "flags.monks-little-details.token-highlight-scale")) {
+                    await token.update({ "flags.monks-combat-marker.token-highlight-scale": getProperty(token, "flags.monks-little-details.token-highlight-scale") });
+                }
+                if (getProperty(token, "flags.monks-little-details.token-combat-animation")) {
+                    await token.update({ "flags.monks-combat-marker.token-combat-animation": getProperty(token, "flags.monks-little-details.token-combat-animation") });
+                }
+                if (getProperty(token, "flags.monks-little-details.token-combat-animation-hostile")) {
+                    await token.update({ "flags.monks-combat-marker.token-combat-animation-hostile": getProperty(token, "flags.monks-little-details.token-combat-animation-hostile") });
+                }
+            }
+        }
+
+        for (let actor of game.actors) {
+            if (getProperty(actor.prototypeToken, "flags.monks-little-details.token-highlight")) {
+                await actor.prototypeToken.update({ "flags.monks-combat-marker.token-highlight": getProperty(actor.prototypeToken, "flags.monks-little-details.token-highlight") });
+            }
+            if (getProperty(actor.prototypeToken, "flags.monks-little-details.token-highlight-scale")) {
+                await actor.prototypeToken.update({ "flags.monks-combat-marker.token-highlight-scale": getProperty(actor.prototypeToken, "flags.monks-little-details.token-highlight-scale") });
+            }
+            if (getProperty(actor.prototypeToken, "flags.monks-little-details.token-combat-animation")) {
+                await actor.prototypeToken.update({ "flags.monks-combat-marker.token-combat-animation": getProperty(actor.prototypeToken, "flags.monks-little-details.token-combat-animation") });
+            }
+            if (getProperty(actor.prototypeToken, "flags.monks-little-details.token-combat-animation-hostile")) {
+                await actor.prototypeToken.update({ "flags.monks-combat-marker.token-combat-animation-hostile": getProperty(actor.prototypeToken, "flags.monks-little-details.token-combat-animation-hostile") });
+            }
+        }
+
+        ui.notifications.warn("Monk's Combat Marker has transfered over settings from Monk's Little Details, you will need to refresh your browser for some settings to take effect.", { permanent: true });
+
+        await game.settings.set("monks-combat-marker", "transfer-settings", true);
     }
 
     static isDefeated(token) {
@@ -162,26 +215,26 @@ export class MonksCombatMarker {
             }
 
             if (visible)
-                CombatMarker.turnMarkerAnim[token.id] = token;
+                MonksCombatMarker.turnMarkerAnim[token.id] = token;
             else
-                delete CombatMarker.turnMarkerAnim[token.id];
+                delete MonksCombatMarker.turnMarkerAnim[token.id];
 
             if (setting('token-highlight-animate') > 0) {
-                if (!CombatMarker._animate && Object.keys(CombatMarker.turnMarkerAnim).length != 0) {
-                    CombatMarker._animate = CombatMarker.animateMarkers.bind(this);
-                    canvas.app.ticker.add(CombatMarker._animate);
-                } else if (CombatMarker._animate != undefined && Object.keys(CombatMarker.turnMarkerAnim).length == 0) {
-                    canvas.app.ticker.remove(CombatMarker._animate);
-                    delete CombatMarker._animate;
+                if (!MonksCombatMarker._animate && Object.keys(MonksCombatMarker.turnMarkerAnim).length != 0) {
+                    MonksCombatMarker._animate = MonksCombatMarker.animateMarkers.bind(this);
+                    canvas.app.ticker.add(MonksCombatMarker._animate);
+                } else if (MonksCombatMarker._animate != undefined && Object.keys(MonksCombatMarker.turnMarkerAnim).length == 0) {
+                    canvas.app.ticker.remove(MonksCombatMarker._animate);
+                    delete MonksCombatMarker._animate;
                 }
             }
         }
     }
 
     static clearTurnMarker() {
-        CombatMarker.turnMarkerAnim = {};
-        canvas.app.ticker.remove(CombatMarker._animate);
-        delete CombatMarker._animate;
+        MonksCombatMarker.turnMarkerAnim = {};
+        canvas.app.ticker.remove(MonksCombatMarker._animate);
+        delete MonksCombatMarker._animate;
     }
 
     static removeTurnMarker(token) {
@@ -192,17 +245,17 @@ export class MonksCombatMarker {
             token.ldmarker.destroy();
             delete token.ldmarker;
         }
-        delete CombatMarker.turnMarkerAnim[token.id];
+        delete MonksCombatMarker.turnMarkerAnim[token.id];
 
-        if (Object.keys(CombatMarker.turnMarkerAnim).length == 0) {
-            canvas.app.ticker.remove(CombatMarker._animate);
-            delete CombatMarker._animate;
+        if (Object.keys(MonksCombatMarker.turnMarkerAnim).length == 0) {
+            canvas.app.ticker.remove(MonksCombatMarker._animate);
+            delete MonksCombatMarker._animate;
         }
     }
 
     static animateMarkers(dt) {
         let interval = setting('token-highlight-animate');
-        for (const token of Object.values(CombatMarker.turnMarkerAnim)) {
+        for (const token of Object.values(MonksCombatMarker.turnMarkerAnim)) {
             if (token?.ldmarker?.transform) {
                 let delta = interval / 10000;
                 try {
@@ -321,7 +374,7 @@ Hooks.on("updateCombatant", function (combatant, data, options, userId) {
         //const combatant = combat.combatants.find((o) => o.id === data.id);
         //let token = canvas.tokens.get(combatant.token._id);
         let token = combatant.token.object;
-        CombatMarker.toggleTurnMarker(token, token.id == combat.current.tokenId);
+        MonksCombatMarker.toggleTurnMarker(token, token.id == combat.current.tokenId);
     }
 });
 
@@ -333,7 +386,7 @@ Hooks.on("deleteCombatant", function (combatant, data, options, userId) {
     if (combat && combat.started) {
         if (combatant.token) {  //token may have been deleted before the combatant
             let token = combatant.token._object;
-            CombatMarker.removeTurnMarker(token);
+            MonksCombatMarker.removeTurnMarker(token);
         }
     }
 });
@@ -347,7 +400,7 @@ Hooks.on("createCombatant", function (combatant, options, userId) {
         //let combatant = combat.combatants.find((o) => o.id === data.id);
         //let token = canvas.tokens.get(combatant.token._id);
         let token = combatant.token.object;
-        CombatMarker.toggleTurnMarker(token, token.id == combat.current.tokenId);
+        MonksCombatMarker.toggleTurnMarker(token, token.id == combat.current.tokenId);
     }
 });
 
@@ -372,14 +425,14 @@ Hooks.on("updateToken", function (document, data, options, userid) {
 
         if (activeTokens.includes(token?.id)) {
             setTimeout(function () {
-                CombatMarker.removeTurnMarker(token);
-                CombatMarker.toggleTurnMarker(token, true);
+                MonksCombatMarker.removeTurnMarker(token);
+                MonksCombatMarker.toggleTurnMarker(token, true);
             }, 100);
         }
     }
     if (setting('token-highlight-remove') && (data.x != undefined || data.y != undefined)) {
         token.preventMarker = true;
-        CombatMarker.removeTurnMarker(token);
+        MonksCombatMarker.removeTurnMarker(token);
     }
 });
 
@@ -392,7 +445,7 @@ Hooks.on("refreshToken", function (token) {
 
 Hooks.on("sightRefresh", function () {
     //clear all previous combat markers
-    CombatMarker.clearTurnMarker();
+    MonksCombatMarker.clearTurnMarker();
 
     //check for current combats
     let activeCombats = game.combats.filter(c => {
@@ -402,7 +455,7 @@ Hooks.on("sightRefresh", function () {
     if (activeCombats.length) {
         //add a combat marker for each active combatant
         for (let combat of activeCombats) {
-            CombatMarker.toggleTurnMarker(combat.combatant?.token?._object, true);
+            MonksCombatMarker.toggleTurnMarker(combat.combatant?.token?._object, true);
         }
     }
 });
@@ -410,7 +463,7 @@ Hooks.on("sightRefresh", function () {
 //check on the turn marker if the scene changes
 Hooks.on("canvasReady", function (canvas) {
     //clear all previous combat markers
-    CombatMarker.clearTurnMarker();
+    MonksCombatMarker.clearTurnMarker();
 
     //check for current combats
     let activeCombats = game.combats.filter(c => {
@@ -420,7 +473,7 @@ Hooks.on("canvasReady", function (canvas) {
     if (activeCombats.length) {
         //add a combat marker for each active combatant
         for (let combat of activeCombats) {
-            CombatMarker.toggleTurnMarker(combat.combatant?.token?._object, true);
+            MonksCombatMarker.toggleTurnMarker(combat.combatant?.token?._object, true);
         }
     }
 });
@@ -428,12 +481,10 @@ Hooks.on("canvasReady", function (canvas) {
 Hooks.on("deleteCombat", function (combat) {
     //remove the combat highlight from any token in this combat
     if (combat.started == true) {
-        if (setting("token-combat-highlight")) {
-            for (let combatant of combat.combatants) {
-                let token = combatant.token; //canvas.tokens.get(combatant.token._id);
-                if (token)
-                    CombatMarker.removeTurnMarker(token._object);
-            }
+        for (let combatant of combat.combatants) {
+            let token = combatant.token; //canvas.tokens.get(combatant.token._id);
+            if (token)
+                MonksCombatMarker.removeTurnMarker(token._object);
         }
     }
 });
@@ -444,7 +495,7 @@ Hooks.on("updateCombat", async function (combat, delta) {
             let token = combatant.token; //canvas.tokens.get(combatant.token.id);
             delete token?._object?.preventMarker;
             if (token)
-                CombatMarker.toggleTurnMarker(token._object, token.id == combat?.current?.tokenId);
+                MonksCombatMarker.toggleTurnMarker(token._object, token.id == combat?.current?.tokenId);
         }
         //let token = canvas?.tokens.get(combat?.current?.tokenId);
         //MonksCombatMarker.removeTurnMarker(token);

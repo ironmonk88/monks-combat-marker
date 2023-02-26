@@ -1,7 +1,5 @@
 {
-	"MonksCombatMarker.token-combat-highlight.name": "Show Token Highlight",
-	"MonksCombatMarker.token-combat-highlight.hint": "Show a highlight under the token that is currently active in combat",
-	"MonksCombatMarker.token-highlight-animate.name": "Combat highlight animation speed",
+	"MonksCombatMarker.token-highlight-animate.name": "Animation speed",
 	"MonksCombatMarker.token-highlight-animate.hint": "Animate the token combat highlight, set to 0 for no animation",
 	"MonksCombatMarker.token-highlight-picture.name": "Combat Highlight Image",
 	"MonksCombatMarker.token-highlight-picture.hint": "Image to use as the animated image for combat tracking",

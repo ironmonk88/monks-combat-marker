@@ -1,4 +1,4 @@
-import { MonksLittleDetails, i18n } from "./monks-little-details.js";
+import { MonksCombatMarker, i18n } from "./monks-combat-marker.js";
 
 export const registerSettings = function () {
     // Register any custom module settings here
@@ -16,25 +16,17 @@ export const registerSettings = function () {
 	};
 
 	//Combat Token Highlight
-	game.settings.register(modulename, "token-combat-highlight", {
-		name: i18n("MonksCombatMarker.token-combat-highlight.name"),
-		hint: i18n("MonksCombatMarker.token-combat-highlight.hint"),
-		scope: "world",
-		config: true,
-		default: true,
-		type: Boolean
-	});
 	game.settings.register(modulename, "token-highlight-remove", {
-		name: i18n("MonksBloodsplats.token-highlight-remove.name"),
-		hint: i18n("MonksBloodsplats.token-highlight-remove.hint"),
+		name: i18n("MonksCombatMarker.token-highlight-remove.name"),
+		hint: i18n("MonksCombatMarker.token-highlight-remove.hint"),
 		scope: "world",
 		config: true,
 		default: false,
 		type: Boolean
 	});
 	game.settings.register(modulename, "token-highlight-animate", {
-		name: i18n("MonksBloodsplats.token-highlight-animate.name"),
-		hint: i18n("MonksBloodsplats.token-highlight-animate.hint"),
+		name: i18n("MonksCombatMarker.token-highlight-animate.name"),
+		hint: i18n("MonksCombatMarker.token-highlight-animate.hint"),
 		scope: "world",
 		config: true,
 		default: 100,
@@ -46,8 +38,8 @@ export const registerSettings = function () {
 		}
 	});
 	game.settings.register(modulename, "token-highlight-picture", {
-		name: i18n("MonksBloodsplats.token-highlight-picture.name"),
-		hint: i18n("MonksBloodsplats.token-highlight-picture.hint"),
+		name: i18n("MonksCombatMarker.token-highlight-picture.name"),
+		hint: i18n("MonksCombatMarker.token-highlight-picture.hint"),
 		scope: "world",
 		config: true,
 		default: "modules/monks-combat-marker/markers/marker02.webp",
@@ -56,8 +48,8 @@ export const registerSettings = function () {
 		onChange: debouncedReload
 	});
 	game.settings.register(modulename, "token-highlight-picture-hostile", {
-		name: i18n("MonksBloodsplats.token-highlight-picture-hostile.name"),
-		hint: i18n("MonksBloodsplats.token-highlight-picture-hostile.hint"),
+		name: i18n("MonksCombatMarker.token-highlight-picture-hostile.name"),
+		hint: i18n("MonksCombatMarker.token-highlight-picture-hostile.hint"),
 		scope: "world",
 		config: true,
 		default: "modules/monks-combat-marker/markers/marker01.webp",
@@ -66,8 +58,8 @@ export const registerSettings = function () {
 		onChange: debouncedReload
 	});
 	game.settings.register(modulename, "token-highlight-scale", {
-		name: i18n("MonksBloodsplats.token-highlight-scale.name"),
-		hint: i18n("MonksBloodsplats.token-highlight-scale.hint"),
+		name: i18n("MonksCombatMarker.token-highlight-scale.name"),
+		hint: i18n("MonksCombatMarker.token-highlight-scale.hint"),
 		scope: "world",
 		config: true,
 		default: 1.5,
@@ -80,8 +72,8 @@ export const registerSettings = function () {
 		onChange: debouncedReload
 	});
 	game.settings.register(modulename, "token-combat-animation", {
-		name: i18n("MonksBloodsplats.token-combat-animation.name"),
-		hint: i18n("MonksBloodsplats.token-combat-animation.hint"),
+		name: i18n("MonksCombatMarker.token-combat-animation.name"),
+		hint: i18n("MonksCombatMarker.token-combat-animation.hint"),
 		scope: "world",
 		default: 'clockwise',
 		type: String,
@@ -89,12 +81,18 @@ export const registerSettings = function () {
 		config: true
 	});
 	game.settings.register(modulename, "token-combat-animation-hostile", {
-		name: i18n("MonksBloodsplats.token-combat-animation-hostile.name"),
-		hint: i18n("MonksBloodsplats.token-combat-animation-hostile.hint"),
+		name: i18n("MonksCombatMarker.token-combat-animation-hostile.name"),
+		hint: i18n("MonksCombatMarker.token-combat-animation-hostile.hint"),
 		scope: "world",
 		default: 'clockwise',
 		type: String,
 		choices: animation,
 		config: true
+	});
+
+	game.settings.register(modulename, "transfer-settings", {
+		scope: "world",
+		config: false,
+		default: false,
 	});
 };
