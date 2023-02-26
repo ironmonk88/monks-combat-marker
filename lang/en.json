@@ -1,0 +1,25 @@
+{
+	"MonksCombatMarker.token-combat-highlight.name": "Show Token Highlight",
+	"MonksCombatMarker.token-combat-highlight.hint": "Show a highlight under the token that is currently active in combat",
+	"MonksCombatMarker.token-highlight-animate.name": "Combat highlight animation speed",
+	"MonksCombatMarker.token-highlight-animate.hint": "Animate the token combat highlight, set to 0 for no animation",
+	"MonksCombatMarker.token-highlight-picture.name": "Combat Highlight Image",
+	"MonksCombatMarker.token-highlight-picture.hint": "Image to use as the animated image for combat tracking",
+	"MonksCombatMarker.token-highlight-picture-hostile.name": "Hostile Highlight Image",
+	"MonksCombatMarker.token-highlight-picture-hostile.hint": "Image to use as the animated image for hostiles in combat tracking",
+	"MonksCombatMarker.token-highlight-scale.name": "Combat Highlight size",
+	"MonksCombatMarker.token-highlight-scale.hint": "Size of the Highlight image in relation to the token",
+	"MonksCombatMarker.token-combat-animation.name": "Combat Highlight Animation",
+	"MonksCombatMarker.token-combat-animation.hint": "Chose how to animate the combat highlight",
+	"MonksCombatMarker.token-combat-animation-hostile.name": "Hostile Highlight Animation",
+	"MonksCombatMarker.token-combat-animation-hostile.hint": "Chose how to animate the highlight for hostile characters",
+	"MonksCombatMarker.token-highlight-remove.name": "Clear Token Highlight",
+	"MonksCombatMarker.token-highlight-remove.hint": "Clear token highlighter after the Token is first moved",
+
+	"MonksCombatMarker.animation.none": "None",
+	"MonksCombatMarker.animation.clockwise": "Clockwise",
+	"MonksCombatMarker.animation.counterclockwise": "Counter-clockwise",
+	"MonksCombatMarker.animation.pulse": "Pulse",
+	"MonksCombatMarker.animation.fadein": "Fade-in",
+	"MonksCombatMarker.animation.fadeout": "Fade-out"
+}

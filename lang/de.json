@@ -1,0 +1,25 @@
+{
+	"MonksCombatMarker.token-combat-highlight.name": "Aktiven Token hervorheben",
+	"MonksCombatMarker.token-combat-highlight.hint": "Zeigt einen Effekt im Kampf unter dem Token an, der gerade dran ist.",
+	"MonksCombatMarker.token-highlight-animate.name": "Kampfhervorhebungsanimationsgeschwindigkeit",
+	"MonksCombatMarker.token-highlight-animate.hint": "Animiert den Effekt unter dem aktiven Token, setze auf 0 um die Animation zu deaktivieren",
+	"MonksCombatMarker.token-highlight-picture.name": "Kampfhervorhebungsbild",
+	"MonksCombatMarker.token-highlight-picture.hint": "Welches Bild als Effekt unter dem aktiven Token verwendet werden soll",
+	"MonksCombatMarker.token-highlight-picture-hostile.name": "Feindliches Hervorhebungsbild",
+	"MonksCombatMarker.token-highlight-picture-hostile.hint": "Welches Bild als Effekt unter feindlichen Tokens verwendet werden soll",
+	"MonksCombatMarker.token-highlight-scale.name": "Größe der Hervorhebung",
+	"MonksCombatMarker.token-highlight-scale.hint": "Größe der Hervorhebung in Relation zur Größe des Tokens",
+	"MonksCombatMarker.token-combat-animation.name": "Kampfhervorstellungsanimation",
+	"MonksCombatMarker.token-combat-animation.hint": "Wähle aus wie der Effekt animiert sein soll",
+	"MonksCombatMarker.token-combat-animation-hostile.name": "Feindliche Kampfhervorstellungsanimation",
+	"MonksCombatMarker.token-combat-animation-hostile.hint": "Wähle aus wie der feindliche Effekt animiert sein soll",
+	"MonksCombatMarker.token-highlight-remove.name": "Kampfhervorhebung entfernen",
+	"MonksCombatMarker.token-highlight-remove.hint": "Entfernt die Kampfhervorhebung sobald der Token das erste mal in seinem Zug bewegt wird",
+
+	"MonksCombatMarker.animation.none": "Keine",
+	"MonksCombatMarker.animation.clockwise": "Im Uhrzeigersinn",
+	"MonksCombatMarker.animation.counterclockwise": "Gegen den Uhrzeigersinn",
+	"MonksCombatMarker.animation.pulse": "Pulsierend",
+	"MonksCombatMarker.animation.fadein": "Einblenden",
+	"MonksCombatMarker.animation.fadeout": "Ausblenden"
+}

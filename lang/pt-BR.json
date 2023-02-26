@@ -1,0 +1,23 @@
+{
+	"MonksCombatMarker.token-combat-highlight.name": "Mostrar Destaque no Token",
+	"MonksCombatMarker.token-combat-highlight.hint": "Mostrar um destaque abaixo do token que está atualmente ativo no combate",
+	"MonksCombatMarker.token-highlight-animate.name": "Velocidade da animação do destaque",
+	"MonksCombatMarker.token-highlight-animate.hint": "Anima o destaque do token, defina 0 para não animar",
+	"MonksCombatMarker.token-highlight-picture.name": "Imagem do Destaque do Token",
+	"MonksCombatMarker.token-highlight-picture.hint": "Imagem que será usada como imagem animada para destacar o token durante o combate",
+	"MonksCombatMarker.token-highlight-picture-hostile.name": "Destaque de Token Hostil",
+	"MonksCombatMarker.token-highlight-picture-hostile.hint": "Imagem que será usada como imagem animada para destacar tokens hostis durante o combate",
+	"MonksCombatMarker.token-highlight-scale.name": "Tamanho do destaque",
+	"MonksCombatMarker.token-highlight-scale.hint": "Tamanho da imagem usada como destaque em relação ao token",
+	"MonksCombatMarker.token-combat-animation.name": "Animação do Destaque",
+	"MonksCombatMarker.token-combat-animation.hint": "Escolha como o destaque será animado durante o combate",
+	"MonksCombatMarker.token-highlight-remove.name": "Remover destaque no Token",
+	"MonksCombatMarker.token-highlight-remove.hint": "Remover destaque no token depois que o token fizer seus primeiros movimentos",
+
+	"MonksCombatMarker.animation.none": "Nenhum",
+	"MonksCombatMarker.animation.clockwise": "Sentido horário",
+	"MonksCombatMarker.animation.counterclockwise": "Sentido anti-horário",
+	"MonksCombatMarker.animation.pulse": "Pulso",
+	"MonksCombatMarker.animation.fadein": "Aparecimento gradual",
+	"MonksCombatMarker.animation.fadeout": "Desaparecimento gradual"
+}

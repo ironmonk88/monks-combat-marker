@@ -1,0 +1,25 @@
+{
+	"MonksCombatMarker.token-combat-highlight.name": "ターン中のコマを強調表示する",
+	"MonksCombatMarker.token-combat-highlight.hint": "戦闘中、ターンを持っているコマの下にインジケータを表示します。",
+	"MonksCombatMarker.token-highlight-animate.name": "強調表示のアニメーション速度",
+	"MonksCombatMarker.token-highlight-animate.hint": "ターン中の強調表示をアニメーション化します。0に設定すると動かなくなります。",
+	"MonksCombatMarker.token-highlight-picture.name": "ターン中の強調表示に使用する画像",
+	"MonksCombatMarker.token-highlight-picture.hint": "ターン中にアニメーションさせる画像を指定します。",
+	"MonksCombatMarker.token-highlight-picture-hostile.name": "敵対者の強調表示に使用する画像",
+	"MonksCombatMarker.token-highlight-picture-hostile.hint": "敵対者のコマにおいて、ターン中にアニメーションさせる画像を指定します。。",
+	"MonksCombatMarker.token-highlight-scale.name": "強調表示のサイズ",
+	"MonksCombatMarker.token-highlight-scale.hint": "戦闘中のコマに対する強調表示の画像サイズです。",
+	"MonksCombatMarker.token-combat-animation.name": "強調表示のアニメーション",
+	"MonksCombatMarker.token-combat-animation.hint": "強調表示のアニメーションを選択します。",
+	"MonksCombatMarker.token-combat-animation-hostile.name": "敵対者のアニメーション",
+	"MonksCombatMarker.token-combat-animation-hostile.hint": "敵対者のコマにおける、強調表示のアニメーションを選択します。",
+	"MonksCombatMarker.token-highlight-remove.name": "コマの強調表示をすぐに解除する",
+	"MonksCombatMarker.token-highlight-remove.hint": "コマが最初に移動を開始した直後に、強調表示を解除されるようになります。",
+
+	"MonksCombatMarker.animation.none": "なし",
+	"MonksCombatMarker.animation.clockwise": "時計回り",
+	"MonksCombatMarker.animation.counterclockwise": "反時計回り",
+	"MonksCombatMarker.animation.pulse": "パルス",
+	"MonksCombatMarker.animation.fadein": "フェードイン",
+	"MonksCombatMarker.animation.fadeout": "フェードアウト"
+}

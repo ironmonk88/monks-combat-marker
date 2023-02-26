@@ -1,0 +1,19 @@
+{
+	"MonksCombatMarker.token-combat-highlight.name": "Evidenzia Token",
+	"MonksCombatMarker.token-combat-highlight.hint": "Evidenzia il token che è attualmente attivo in combattimento",
+	"MonksCombatMarker.token-highlight-animate.name": "Velocità Animazione Evidenziazione",
+	"MonksCombatMarker.token-highlight-animate.hint": "Anima l'evidenziazione del token in combattimento, imposta a 0 per nessuna animazione",
+	"MonksCombatMarker.token-highlight-picture.name": "Immagine Evidenziazione Combattimento",
+	"MonksCombatMarker.token-highlight-picture.hint": "File immagine da utilizzare per evidenziare il Token.",
+	"MonksCombatMarker.token-highlight-scale.name": "Dimensioni evidenziazione.",
+	"MonksCombatMarker.token-highlight-scale.hint": "Dimensione dell'immagine in relazione al token.",
+	"MonksCombatMarker.token-combat-animation.name": "Animazione Evidenziazione",
+	"MonksCombatMarker.token-combat-animation.hint": "Scegli come animare l'evidenziazione di combattimento",
+	
+	"MonksCombatMarker.animation.none": "Nessuna",
+	"MonksCombatMarker.animation.clockwise": "Orario",
+	"MonksCombatMarker.animation.counterclockwise": "Antiorario",
+	"MonksCombatMarker.animation.pulse": "Pulsazione",
+	"MonksCombatMarker.animation.fadein": "Fade-in",
+	"MonksCombatMarker.animation.fadeout": "Fade-out"
+}

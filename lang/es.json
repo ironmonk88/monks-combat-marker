@@ -1,0 +1,26 @@
+{
+	"I18N.LANGUAGE": "Español",
+	"I18N.MAINTAINERS": "@Viriato139ac#0342",
+ 
+	"MonksCombatMarker.token-combat-highlight.name": "Mostrar resaltado de iconos",
+	"MonksCombatMarker.token-combat-highlight.hint": "Mostrar un efecto de resaltado bajo el icono que está activo actualmente en el combate",
+	"MonksCombatMarker.token-highlight-animate.name": "Animar resaltado de combate",
+	"MonksCombatMarker.token-highlight-animate.hint": "Animar el resaltado del icono de combate, establecer a 0 para no tener ninguna animación",
+	"MonksCombatMarker.token-highlight-picture.name": "Imagen de resaltado de combate",
+	"MonksCombatMarker.token-highlight-picture.hint": "Imagen que se usará como animación en el combate",
+	"MonksCombatMarker.token-highlight-picture-hostile.name": "Imagen de resaltado en actores hostiles",
+	"MonksCombatMarker.token-highlight-picture-hostile.hint": "La imagen animada que se usará para los actores hostiles en el asistente de combate",
+	"MonksCombatMarker.token-highlight-scale.name": "Tamaño de resaltado",
+	"MonksCombatMarker.token-highlight-scale.hint": "Tamaño de la imagen de resaltado en relación al icono",
+	"MonksCombatMarker.token-combat-animation.name": "Animación de destacados en combate",
+	"MonksCombatMarker.token-combat-animation.hint": "Escoja cómo animar los destacados en combate",																		
+	"MonksCombatMarker.token-highlight-remove.name": "Limpiar resaltado de icono",
+	"MonksCombatMarker.token-highlight-remove.hint": "Limpiar el resaltado del icono tras ser movido por primera vez",
+
+	"MonksCombatMarker.animation.none": "Ninguno",
+	"MonksCombatMarker.animation.clockwise": "Sentido horario",
+	"MonksCombatMarker.animation.counterclockwise": "Sentido antihorario",
+	"MonksCombatMarker.animation.pulse": "Pulso",
+	"MonksCombatMarker.animation.fadein": "Entrada",
+	"MonksCombatMarker.animation.fadeout": "Salida"
+}

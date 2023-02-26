@@ -1,0 +1,23 @@
+{
+	"MonksCombatMarker.token-combat-highlight.name": "Afficher la mise en évidence du Token",
+	"MonksCombatMarker.token-combat-highlight.hint": "Affiche une \"mise en évidence\" sous le Token qui est actuellement actif en combat.",
+	"MonksCombatMarker.token-highlight-animate.name": "Vitesse d'animation de la mise en évidence du combat",
+	"MonksCombatMarker.token-highlight-animate.hint": "Animer la mise en évidence du Token en combat, mettre à 0 pour ne pas l'animer.",
+	"MonksCombatMarker.token-highlight-picture.name": "Image de mise en évidence du combat",
+	"MonksCombatMarker.token-highlight-picture.hint": "Image à utiliser comme image animée pour le suivi des combats",
+	"MonksCombatMarker.token-highlight-picture-hostile.name": "Image de surbrillance des acteurs hostile",
+	"MonksCombatMarker.token-highlight-picture-hostile.hint": "Image à utiliser comme image animée pour les hostiles dans la fenêtre de combat",
+	"MonksCombatMarker.token-highlight-scale.name": "Taille de la mise en évidence",
+	"MonksCombatMarker.token-highlight-scale.hint": "Taille de l'image de mise en évidence par rapport au Token",
+	"MonksCombatMarker.token-combat-animation.name": "Animation de mise en évidence du combat",
+	"MonksCombatMarker.token-combat-animation.hint": "Choisir comment animer la mise en évidence du combat",
+	"MonksCombatMarker.token-highlight-remove.name": "Effacer la mise en évidence du Token",
+	"MonksCombatMarker.token-highlight-remove.hint": "Effacer la mise en évidence de Token après le premier déplacement de celui-ci",
+	
+	"MonksCombatMarker.animation.none": "Aucun",
+	"MonksCombatMarker.animation.clockwise": "Dans le sens des aiguilles d'une montre",
+	"MonksCombatMarker.animation.counterclockwise": "Dans le sens inverse des aiguilles d'une montre",
+	"MonksCombatMarker.animation.pulse": "Impulsion",
+	"MonksCombatMarker.animation.fadein": "Fondu enchaîné",
+	"MonksCombatMarker.animation.fadeout": "Sortie en fondu"
+}
