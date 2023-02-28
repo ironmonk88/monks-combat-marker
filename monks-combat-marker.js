@@ -100,7 +100,7 @@ export class MonksCombatMarker {
         MonksCombatMarker._setting["token-combat-animation-hostile"] = setting("token-combat-animation-hostile");
         MonksCombatMarker._setting["token-highlight-scale"] = setting("token-highlight-scale");
 
-        if (!setting("transfer-settings") && game.user.isGM) {
+        if (!setting("transfer-settings") && game.user.isGM && game.modules.get("monks-little-details")?.active) {
             MonksCombatMarker.transferSettings();
         }
     }
