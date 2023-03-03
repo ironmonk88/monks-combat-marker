@@ -1,7 +1,7 @@
 {
 	"MonksCombatMarker.token-highlight-animate.name": "Animation speed",
 	"MonksCombatMarker.token-highlight-animate.hint": "Animate the token combat highlight, set to 0 for no animation",
-	"MonksCombatMarker.token-highlight-picture.name": "Combat Highlight Image",
+	"MonksCombatMarker.token-highlight-picture.name": "Friendly Highlight Image",
 	"MonksCombatMarker.token-highlight-picture.hint": "Image to use as the animated image for combat tracking",
 	"MonksCombatMarker.token-highlight-picture-hostile.name": "Hostile Highlight Image",
 	"MonksCombatMarker.token-highlight-picture-hostile.hint": "Image to use as the animated image for hostiles in combat tracking",

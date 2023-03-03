@@ -106,10 +106,21 @@ export class MonksCombatMarker {
     }
 
     static async transferSettings() {
+        let swapFilename = function (value, name) {
+            if (value && (name === "token-highlight-picture" || name === "token-highlight-picture-hostile" || name ===  true)) {
+                if (value.startsWith("modules/monks-little-details/markers/marker") && value.endsWith(".png")) {
+                    value = value.replace(".png", ".webp");
+                }
+                value = value.replace("monks-little-details", "monks-combat-marker");
+            }
+
+            return value;
+        }
         let setSetting = async function (name) {
             let oldChange = game.settings.settings.get(`monks-combat-marker.${name}`).onChange;
             game.settings.settings.get(`monks-combat-marker.${name}`).onChange = null;
-            await game.settings.set("monks-combat-marker", name, game.settings.get("monks-little-details", name));
+            let value = swapFilename(game.settings.get("monks-little-details", name), name);
+            await game.settings.set("monks-combat-marker", name, value);
             game.settings.settings.get(`monks-combat-marker.${name}`).onChange = oldChange;
         }
 
@@ -124,7 +135,7 @@ export class MonksCombatMarker {
         for (let scene of game.scenes) {
             for (let token of scene.tokens) {
                 if (getProperty(token, "flags.monks-little-details.token-highlight")) {
-                    await token.update({ "flags.monks-combat-marker.token-highlight": getProperty(token, "flags.monks-little-details.token-highlight") });
+                    await token.update({ "flags.monks-combat-marker.token-highlight": swapFilename(getProperty(token, "flags.monks-little-details.token-highlight"), true) });
                 }
                 if (getProperty(token, "flags.monks-little-details.token-highlight-scale")) {
                     await token.update({ "flags.monks-combat-marker.token-highlight-scale": getProperty(token, "flags.monks-little-details.token-highlight-scale") });
@@ -140,7 +151,7 @@ export class MonksCombatMarker {
 
         for (let actor of game.actors) {
             if (getProperty(actor.prototypeToken, "flags.monks-little-details.token-highlight")) {
-                await actor.prototypeToken.update({ "flags.monks-combat-marker.token-highlight": getProperty(actor.prototypeToken, "flags.monks-little-details.token-highlight") });
+                await actor.prototypeToken.update({ "flags.monks-combat-marker.token-highlight": swapFilename(getProperty(actor.prototypeToken, "flags.monks-little-details.token-highlight"), true) });
             }
             if (getProperty(actor.prototypeToken, "flags.monks-little-details.token-highlight-scale")) {
                 await actor.prototypeToken.update({ "flags.monks-combat-marker.token-highlight-scale": getProperty(actor.prototypeToken, "flags.monks-little-details.token-highlight-scale") });
