@@ -1,6 +1,6 @@
 {
   "title": "Monk's Combat Marker",
-  "description": "Show a marker underneath the token who has the current turn in combat",
+  "description": "Display an animated disc behind the token to indicate the current combatant's turn. You can customise the animation, image that is display, size of the graphic, and speed of the animation.",
   "version": "10.1",
   "authors": [
     {
