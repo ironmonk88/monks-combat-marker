@@ -13,7 +13,7 @@ You can add a custom image for either friendly combatants or hostile combatants.
 
 You can also have a different animation for friendly combatants vs hostile combatants, just to add another way to indicate who's turn it is.
 
-Currently the animations availabel are as follows:
+Currently the animations available are as follows:
 - None, in case you have an image that is already animated.
 - Clockwise
 - Counter-clockwise
