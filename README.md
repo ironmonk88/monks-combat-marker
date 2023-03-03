@@ -23,10 +23,9 @@ Currently the animations available are as follows:
 
 You can also set the size of the underlying image, relative to the original token size, and set the animation speed.
 
-And if you feel like the indicator gets in the way of combat, you can have it disappear once the token makes it's first move.  That way the play has an indication that they have a turn, but aren't distracted by the indicayto once they begin to take their turn.
+And if you feel like the indicator gets in the way of combat, you can have it disappear once the token makes it's first move.  That way the player has an indication that they have a turn, but aren't distracted by the indicator once they begin to take their turn.
 
 ## Bug Reporting
-I'm sure there are lots of issues with it.  It's very much a work in progress.
 Please feel free to contact me on discord if you have any questions or concerns. ironmonk88#4075
 
 ## Support
