@@ -25,6 +25,10 @@ You can also set the size of the underlying image, relative to the original toke
 
 And if you feel like the indicator gets in the way of combat, you can have it disappear once the token makes it's first move.  That way the player has an indication that they have a turn, but aren't distracted by the indicator once they begin to take their turn.
 
+## Monk's Little Details
+
+This feature was previously part of the Monk's Little Details module, but was split out so that the modules were easier to maintain and could concentrate on the function they did best.
+
 ## Bug Reporting
 Please feel free to contact me on discord if you have any questions or concerns. ironmonk88#4075
 
