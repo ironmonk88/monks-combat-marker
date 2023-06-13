@@ -27,7 +27,7 @@ export const registerSettings = function () {
 	game.settings.register(modulename, "token-highlight-animate", {
 		name: i18n("MonksCombatMarker.token-highlight-animate.name"),
 		hint: i18n("MonksCombatMarker.token-highlight-animate.hint"),
-		scope: "world",
+		scope: "client",
 		config: true,
 		default: 100,
 		type: Number,
@@ -53,6 +53,16 @@ export const registerSettings = function () {
 		scope: "world",
 		config: true,
 		default: "modules/monks-combat-marker/markers/marker01.webp",
+		type: String,
+		//filePicker: true,
+		onChange: debouncedReload
+	});
+	game.settings.register(modulename, "token-highlight-picture-neutral", {
+		name: i18n("MonksCombatMarker.token-highlight-picture-neutral.name"),
+		hint: i18n("MonksCombatMarker.token-highlight-picture-neutral.hint"),
+		scope: "world",
+		config: true,
+		default: "modules/monks-combat-marker/markers/marker05.webp",
 		type: String,
 		//filePicker: true,
 		onChange: debouncedReload
@@ -83,6 +93,15 @@ export const registerSettings = function () {
 	game.settings.register(modulename, "token-combat-animation-hostile", {
 		name: i18n("MonksCombatMarker.token-combat-animation-hostile.name"),
 		hint: i18n("MonksCombatMarker.token-combat-animation-hostile.hint"),
+		scope: "world",
+		default: 'clockwise',
+		type: String,
+		choices: animation,
+		config: true
+	});
+	game.settings.register(modulename, "token-combat-animation-neutral", {
+		name: i18n("MonksCombatMarker.token-combat-animation-neutral.name"),
+		hint: i18n("MonksCombatMarker.token-combat-animation-neutral.hint"),
 		scope: "world",
 		default: 'clockwise',
 		type: String,

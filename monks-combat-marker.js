@@ -98,11 +98,31 @@ export class MonksCombatMarker {
         MonksCombatMarker._setting["token-highlight-animate"] = setting("token-highlight-animate");
         MonksCombatMarker._setting["token-combat-animation"] = setting("token-combat-animation");
         MonksCombatMarker._setting["token-combat-animation-hostile"] = setting("token-combat-animation-hostile");
+        MonksCombatMarker._setting["token-combat-animation-neutral"] = setting("token-combat-animation-neutral");
         MonksCombatMarker._setting["token-highlight-scale"] = setting("token-highlight-scale");
 
         if (!setting("transfer-settings") && game.user.isGM && game.modules.get("monks-little-details")?.active) {
             MonksCombatMarker.transferSettings();
         }
+    }
+
+    static tokenHighlightScale(token) {
+        let scale = getProperty(token.document.flags, "monks-combat-marker.token-highlight-scale") || setting("token-highlight-scale");
+        return token.document.texture.scaleX < 1 ? scale * token.document.texture.scaleX : scale;
+    }
+
+    static tokenHighlightAnimation(token) {
+        let animation = getProperty(token.document.flags, "monks-combat-marker.token-combat-animation");
+        if (!animation) {
+            switch (token.document.disposition) {
+                case 1: animation = setting('token-combat-animation'); break;
+                case -1: animation = setting('token-combat-animation-hostile'); break;
+                case 0:
+                default:
+                    animation = setting('token-combat-animation-neutral'); break;
+            }
+        }
+        return animation || "none";
     }
 
     static async transferSettings() {
@@ -170,13 +190,23 @@ export class MonksCombatMarker {
     }
 
     static isDefeated(token) {
-        return (token && (token.combatant && token.combatant.defeated) || token.actor?.effects.find(e => e.getFlag("core", "statusId") === CONFIG.specialStatusEffects.DEFEATED) || token.document.overlayEffect == CONFIG.controlIcons.defeated);
+        return (token && (token.combatant && token.combatant.defeated) || token.actor?.statuses.has(CONFIG.specialStatusEffects.DEFEATED) || token.document.overlayEffect == CONFIG.controlIcons.defeated);
     }
 
     static toggleTurnMarker(token, visible) {
         if (token && token.preventMarker !== true) {
             if (token?.ldmarker?.transform == undefined) {
-                let highlightFile = token.document.getFlag('monks-combat-marker', 'token-highlight') || (token.document.disposition != 1 ? setting("token-highlight-picture-hostile") : null) || setting("token-highlight-picture") || "";
+                let highlightFile = token.document.getFlag('monks-combat-marker', 'token-highlight');
+                if (!highlightFile) {
+                    switch (token.document.disposition) {
+                        case 1: highlightFile = setting("token-highlight-picture"); break;
+                        case -1: highlightFile = setting("token-highlight-picture-hostile"); break;
+                        case 0:
+                        default:
+                            highlightFile = setting("token-highlight-picture-neutral"); break;
+                    }
+                }
+                highlightFile = highlightFile || "";
                 if (highlightFile.startsWith("modules/monks-combat-marker/markers/marker") && highlightFile.endsWith("png"))
                     highlightFile = highlightFile.substring(0, highlightFile.length - 3) + "webp";
 
@@ -196,7 +226,7 @@ export class MonksCombatMarker {
                         }
                     }
                     markericon.pivot.set(markericon.width / 2, markericon.height / 2);//.set(-(token.w / 2), -(token.h / 2));
-                    const scale = token.document.getFlag('monks-combat-marker', 'token-highlight-scale') || setting("token-highlight-scale");
+                    const scale = MonksCombatMarker.tokenHighlightScale(token);
                     const size = Math.max(token.w, token.h) * scale;
                     markericon.width = markericon.height = size;
                     markericon.position.set(token.x + (token.w / 2), token.y + (token.h / 2));
@@ -219,7 +249,7 @@ export class MonksCombatMarker {
             } else {
                 token.ldmarker.visible = visible && token.isVisible && !MonksCombatMarker.isDefeated(token);
                 token.ldmarker._visible = visible;
-                const scale = token.document.getFlag('monks-combat-marker', 'token-highlight-scale') || setting("token-highlight-scale");
+                const scale = MonksCombatMarker.tokenHighlightScale(token);
                 const size = Math.max(token.w, token.h) * scale;
                 token.ldmarker.width = token.ldmarker.height = size;
                 token.ldmarker.alpha = 0.8;
@@ -270,7 +300,7 @@ export class MonksCombatMarker {
             if (token?.ldmarker?.transform) {
                 let delta = interval / 10000;
                 try {
-                    let animation = getProperty(token.document.flags, "monks-combat-marker.token-combat-animation") || (token.disposition != 1 ? setting("token-combat-animation-hostile") : null) || setting('token-combat-animation');
+                    let animation = MonksCombatMarker.tokenHighlightAnimation(token);
                     if (animation == 'clockwise') {
                         token.ldmarker.rotation += (delta * dt);
                         if (token.ldmarker.rotation > (Math.PI * 2))
@@ -280,7 +310,7 @@ export class MonksCombatMarker {
                         token.ldmarker.rotation -= (delta * dt);
                     }
                     else if (animation == 'pulse') {
-                        let tokenscale = getProperty(token.document.flags, "monks-combat-marker.token-highlight-scale") || setting("token-highlight-scale");
+                        let tokenscale = MonksCombatMarker.tokenHighlightScale(token);
                         let change = tokenscale / 6;
                         const maxval = tokenscale + change;
                         const minval = Math.max(tokenscale - change, 0);
@@ -304,7 +334,7 @@ export class MonksCombatMarker {
                         token.ldmarker.width = token.ldmarker.height = size;
                     }
                     else if (animation == 'fadeout') {
-                        let tokenscale = getProperty(token.document.flags, "monks-combat-marker.token-highlight-scale") || setting("token-highlight-scale");
+                        let tokenscale = MonksCombatMarker.tokenHighlightScale(token);
                         token.ldmarker.pulse.value = token.ldmarker.pulse.value + (delta * dt);
                         let change = tokenscale / 6;
                         if (token.ldmarker.pulse.value > tokenscale + change) {
@@ -317,7 +347,7 @@ export class MonksCombatMarker {
                         token.ldmarker.width = token.ldmarker.height = size;
                         //token.ldmarker.alpha = 1 - (token.ldmarker.pulse.value / tokenscale);
                     } else if (animation == 'fadein') {
-                        let tokenscale = getProperty(token.document.flags, "monks-combat-marker.token-highlight-scale") || setting("token-highlight-scale");
+                        let tokenscale = MonksCombatMarker.tokenHighlightScale(token);
                         token.ldmarker.pulse.value = token.ldmarker.pulse.value - (delta * dt);
                         let change = tokenscale / 4;
                         if (token.ldmarker.pulse.value > tokenscale - change) {
@@ -368,7 +398,7 @@ Hooks.on("renderSettingsConfig", (app, html, data) => {
 
     btn.clone(true).insertAfter($('input[name="monks-combat-marker.token-highlight-picture"]', html).css({ 'flex-basis': 'unset', 'flex-grow': 1 }));
     btn.clone(true).insertAfter($('input[name="monks-combat-marker.token-highlight-picture-hostile"]', html).css({ 'flex-basis': 'unset', 'flex-grow': 1 }));
-    
+    btn.clone(true).insertAfter($('input[name="monks-combat-marker.token-highlight-picture-neutral"]', html).css({ 'flex-basis': 'unset', 'flex-grow': 1 }));
 });
 
 Hooks.on("updateSetting", (setting, data, options, userid) => {
@@ -428,7 +458,8 @@ Hooks.on("updateToken", function (document, data, options, userid) {
         foundry.utils.getProperty(data, 'flags.monks-combat-marker.token-highlight-scale') != undefined ||
         foundry.utils.getProperty(data, 'flags.monks-combat-marker.token-highlight') != undefined ||
         foundry.utils.getProperty(data, 'flags.monks-combat-marker.token-combat-animation') != undefined ||
-        foundry.utils.getProperty(data, 'flags.monks-combat-marker.token-combat-animation-hostile') != undefined) {
+        foundry.utils.getProperty(data, 'flags.monks-combat-marker.token-combat-animation-hostile') != undefined ||
+        foundry.utils.getProperty(data, 'flags.monks-combat-marker.token-combat-animation-neutral') != undefined) {
         let activeCombats = game.combats.filter(c => {
             return c?.scene?.id == game.scenes.viewed.id && c.started;
         });
