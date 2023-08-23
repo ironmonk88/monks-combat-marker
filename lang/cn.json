@@ -7,7 +7,7 @@
 	"MonksCombatMarker.token-highlight-picture-hostile.hint": "战斗中敌方单位所使用的的高亮图片",
 	"MonksCombatMarker.token-highlight-picture-neutral.name": "中立高亮",
 	"MonksCombatMarker.token-highlight-picture-neutral.hint": "在战斗中中立单位所使用的的高亮图片",
-	"MonksCombatMarker.token-highlight-scale.name": 高亮图片大小",
+	"MonksCombatMarker.token-highlight-scale.name": "高亮图片大小",
 	"MonksCombatMarker.token-highlight-scale.hint": "高亮动画图片与 token 比较的相对大小",
 	"MonksCombatMarker.token-combat-animation.name": "高亮动画设置",
 	"MonksCombatMarker.token-combat-animation.hint": "选择以何种方式播放高亮动画",
