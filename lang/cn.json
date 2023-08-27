@@ -1,0 +1,27 @@
+{
+	"MonksCombatMarker.token-highlight-animate.name": "动画速度",
+	"MonksCombatMarker.token-highlight-animate.hint": "Token 战斗高亮动画的播放速度，设置为 0 则将不会有动画效果",
+	"MonksCombatMarker.token-highlight-picture.name": "友方高亮",
+	"MonksCombatMarker.token-highlight-picture.hint": "在战斗中友方单位所使用的高亮图片",
+	"MonksCombatMarker.token-highlight-picture-hostile.name": "敌方高亮",
+	"MonksCombatMarker.token-highlight-picture-hostile.hint": "战斗中敌方单位所使用的的高亮图片",
+	"MonksCombatMarker.token-highlight-picture-neutral.name": "中立高亮",
+	"MonksCombatMarker.token-highlight-picture-neutral.hint": "在战斗中中立单位所使用的的高亮图片",
+	"MonksCombatMarker.token-highlight-scale.name": "高亮图片大小",
+	"MonksCombatMarker.token-highlight-scale.hint": "高亮动画图片与 token 比较的相对大小",
+	"MonksCombatMarker.token-combat-animation.name": "高亮动画设置",
+	"MonksCombatMarker.token-combat-animation.hint": "选择以何种方式播放高亮动画",
+	"MonksCombatMarker.token-combat-animation-hostile.name": "敌方高亮动画",
+	"MonksCombatMarker.token-combat-animation-hostile.hint": "选择以何种方式播放敌方的高亮动画",
+	"MonksCombatMarker.token-combat-animation-neutral.name": "中立高亮动画",
+	"MonksCombatMarker.token-combat-animation-neutral.hint": "选择以何种方式播放中立单位的高亮动画",
+	"MonksCombatMarker.token-highlight-remove.name": "清除高亮",
+	"MonksCombatMarker.token-highlight-remove.hint": "每回合在 token 初次移动后清除其高亮显示",
+
+	"MonksCombatMarker.animation.none": "无",
+	"MonksCombatMarker.animation.clockwise": "顺时针",
+	"MonksCombatMarker.animation.counterclockwise": "逆时针",
+	"MonksCombatMarker.animation.pulse": "脉冲",
+	"MonksCombatMarker.animation.fadein": "淡入",
+	"MonksCombatMarker.animation.fadeout": "淡出"
+}
