@@ -4,8 +4,6 @@ export const registerSettings = function () {
     // Register any custom module settings here
 	let modulename = "monks-combat-marker";
 
-	const debouncedReload = foundry.utils.debounce(function () { window.location.reload(); }, 500);
-
 	let animation = {
 		'none': i18n("MonksCombatMarker.animation.none"),
 		'clockwise': i18n("MonksCombatMarker.animation.clockwise"),
@@ -45,7 +43,7 @@ export const registerSettings = function () {
 		default: "modules/monks-combat-marker/markers/marker02.webp",
 		type: String,
 		//filePicker: true,
-		onChange: debouncedReload
+		requiresReload: true
 	});
 	game.settings.register(modulename, "token-highlight-picture-hostile", {
 		name: i18n("MonksCombatMarker.token-highlight-picture-hostile.name"),
@@ -55,7 +53,7 @@ export const registerSettings = function () {
 		default: "modules/monks-combat-marker/markers/marker01.webp",
 		type: String,
 		//filePicker: true,
-		onChange: debouncedReload
+		requiresReload: true
 	});
 	game.settings.register(modulename, "token-highlight-picture-neutral", {
 		name: i18n("MonksCombatMarker.token-highlight-picture-neutral.name"),
@@ -65,7 +63,7 @@ export const registerSettings = function () {
 		default: "modules/monks-combat-marker/markers/marker05.webp",
 		type: String,
 		//filePicker: true,
-		onChange: debouncedReload
+		requiresReload: true
 	});
 	game.settings.register(modulename, "token-highlight-scale", {
 		name: i18n("MonksCombatMarker.token-highlight-scale.name"),
@@ -79,7 +77,7 @@ export const registerSettings = function () {
 			max: 2,
 			step: 0.1
 		},
-		onChange: debouncedReload
+		requiresReload: true
 	});
 	game.settings.register(modulename, "token-combat-animation", {
 		name: i18n("MonksCombatMarker.token-combat-animation.name"),

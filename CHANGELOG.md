@@ -1,3 +1,9 @@
+# version 11.02
+
+Fixed issue when a token has been deleted and the combatant still exists.
+
+Added chinese language translations.
+
 # version 11.01
 
 Added support for v11.

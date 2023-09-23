@@ -411,7 +411,7 @@ Hooks.on("updateSetting", (setting, data, options, userid) => {
 
 Hooks.on("updateCombatant", function (combatant, data, options, userId) {
     const combat = combatant.parent;
-    if (combat && combat.started) {
+    if (combat && combat.started && combatant.token) {
         //const combatant = combat.combatants.find((o) => o.id === data.id);
         //let token = canvas.tokens.get(combatant.token._id);
         let token = combatant.token.object;
@@ -424,11 +424,10 @@ Hooks.on("updateCombatant", function (combatant, data, options, userId) {
  */
 Hooks.on("deleteCombatant", function (combatant, data, options, userId) {
     let combat = combatant.parent;
-    if (combat && combat.started) {
-        if (combatant.token) {  //token may have been deleted before the combatant
-            let token = combatant.token._object;
-            MonksCombatMarker.removeTurnMarker(token);
-        }
+    if (combat && combat.started && combatant.token) {
+        //token may have been deleted before the combatant
+        let token = combatant.token._object;
+        MonksCombatMarker.removeTurnMarker(token);
     }
 });
 
@@ -437,7 +436,7 @@ Hooks.on("deleteCombatant", function (combatant, data, options, userId) {
  */
 Hooks.on("createCombatant", function (combatant, options, userId) {
     let combat = combatant.parent;
-    if (combat && combat.started) {
+    if (combat && combat.started && combatant.token) {
         //let combatant = combat.combatants.find((o) => o.id === data.id);
         //let token = canvas.tokens.get(combatant.token._id);
         let token = combatant.token.object;
