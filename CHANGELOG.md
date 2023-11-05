@@ -1,3 +1,7 @@
+# version 11.03
+
+Polish translations, thank you nexusmrsep
+
 # version 11.02
 
 Fixed issue when a token has been deleted and the combatant still exists.
