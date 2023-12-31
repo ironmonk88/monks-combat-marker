@@ -1,3 +1,7 @@
+# version 11.04
+
+Fixed issue with webm animation files being used as a marker image.
+
 # version 11.03
 
 Polish translations, thank you nexusmrsep

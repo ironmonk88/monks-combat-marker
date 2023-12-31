@@ -215,7 +215,7 @@ export class MonksCombatMarker {
                         token.ldmarker.destroy();
                     }
                     const markericon = new PIXI.Sprite(tex);
-                    if (highlightFile.endsWith('webm')) {
+                    if (highlightFile.endsWith('webm') && tex?.baseTexture?.resource?.source) {
                         tex.baseTexture.resource.source.autoplay = true;
                         tex.baseTexture.resource.source.loop = true;
                         tex.baseTexture.resource.source.muted = true;
@@ -538,9 +538,6 @@ Hooks.on("updateCombat", async function (combat, delta) {
             if (token)
                 MonksCombatMarker.toggleTurnMarker(token._object, token.id == combat?.current?.tokenId);
         }
-        //let token = canvas?.tokens.get(combat?.current?.tokenId);
-        //MonksCombatMarker.removeTurnMarker(token);
-        //MonksCombatMarker.toggleTurnMarker(token, true);
     }
 });
 
