@@ -195,7 +195,7 @@ export class MonksCombatMarker {
 
     static toggleTurnMarker(token, visible) {
         if (token && token.preventMarker !== true) {
-            if (token?.ldmarker?.transform == undefined) {
+            if (token?.ldmarker?.transform == undefined || token?.ldmarker?.destroyed) {
                 let highlightFile = token.document.getFlag('monks-combat-marker', 'token-highlight');
                 if (!highlightFile) {
                     switch (token.document.disposition) {
@@ -238,7 +238,7 @@ export class MonksCombatMarker {
                     token.ldmarker._visible = visible;
                 }
 
-                if (MonksCombatMarker.markerCache[highlightFile])
+                if (MonksCombatMarker.markerCache[highlightFile] && !MonksCombatMarker.markerCache[highlightFile]?.baseTexture?.destroyed)
                     setHighlight(MonksCombatMarker.markerCache[highlightFile]);
                 else {
                     loadTexture(highlightFile).then((tex) => {

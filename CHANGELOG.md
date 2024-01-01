@@ -1,3 +1,7 @@
+# version 11.05
+
+Maybe fixed issue with disappearing combat markers
+
 # version 11.04
 
 Fixed issue with webm animation files being used as a marker image.
